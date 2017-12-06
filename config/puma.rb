@@ -1,6 +1,7 @@
 # Bind on a specific TCP address. We won't bother using unix sockets because
 # nginx will be running in a different Docker container.
 bind "tcp://#{ENV['BIND_ON']}"
+environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Puma supports threading. Requests are served through an internal thread pool.
 # Even on MRI, it is beneficial to leverage multiple threads because I/O
@@ -58,3 +59,9 @@ restart_command 'puma'
 # we'll set the connection pool value in the DATABASE_URL later.
 #    defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
 #  end
+#
+# on_worker_boot do
+#   require "active_record"
+#   ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
+#   ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
+# end
