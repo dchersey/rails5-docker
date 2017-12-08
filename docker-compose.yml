@@ -23,7 +23,6 @@ services:
     depends_on:
       - 'postgres'
       - 'redis'
-    build: .
     command: puma -C config/puma.rb
     image: railsapp:test
 
@@ -33,7 +32,6 @@ services:
     depends_on:
       - 'postgres'
       - 'redis'
-    build: .
     command: sidekiq -C config/sidekiq.yml.erb
 
   cable:
@@ -41,7 +39,6 @@ services:
       - app
     depends_on:
       - 'redis'
-    build: .
     command: puma -p 28080 cable/config.ru
     ports:
       - '28080:28080'

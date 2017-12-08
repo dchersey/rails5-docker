@@ -1,0 +1,23 @@
+FROM ruby:2.4-alpine
+
+FROM ruby:2.3.3
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+RUN mkdir -p /app
+WORKDIR /app
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
+RUN gem install bundler && bundle install --jobs 20 --retry 5 --without development test
+COPY . /app
+
+ENV RAILS_ROOT /app
+
+EXPOSE 3000
+
+# Set Rails to run in staging
+ENV RAILS_ENV staging
+ENV RACK_ENV staging
+
+COPY . ./
+
+# Precompile Rails assets. We set a dummy secret key
+RUN bundle exec rake SECRET_KEY_BASE=pickasecuretoken  assets:precompile
