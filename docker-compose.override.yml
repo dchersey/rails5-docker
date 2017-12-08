@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  website:
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/app'
+    env_file:
+      - '.env.development'
+
+  sidekiq:
+    volumes:
+      - '.:/app'
+    env_file:
+      - '.env.development'
+
+  cable:
+    volumes:
+      - '.:/app'
+    env_file:
+      - '.env.development'

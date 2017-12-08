@@ -25,12 +25,6 @@ services:
       - 'redis'
     build: .
     image: railsapp:test
-    ports:
-      - '80:3000'
-    volumes:
-      - '.:/app'
-    env_file:
-      - '.env.development'
 
   sidekiq:
     depends_on:
@@ -38,10 +32,6 @@ services:
       - 'redis'
     build: .
     command: sidekiq -C config/sidekiq.yml.erb
-    volumes:
-      - '.:/app'
-    env_file:
-      - '.env.development'
 
   cable:
     depends_on:
@@ -50,10 +40,6 @@ services:
     command: puma -p 28080 cable/config.ru
     ports:
       - '28080:28080'
-    volumes:
-      - '.:/app'
-    env_file:
-      - '.env.development'
 
 volumes:
   redis:
