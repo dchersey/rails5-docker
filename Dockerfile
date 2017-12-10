@@ -1,15 +1,13 @@
 FROM ruby:2.4-alpine
 
-# Install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
+# RUN apk update -qq && apt-get install -y build-essential libpq-dev
+RUN apk update && apk add build-base nodejs postgresql-dev
 
-# Install yarn
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+# Official way to install YARN
+RUN echo -e 'http://dl-cdn.alpinelinux.org/alpine/edge/main\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing' > /etc/apk/repositories && \
+apk add --no-cache yarn
 
-# Install packages
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs yarn
-
+# install rails
 RUN mkdir -p /app
 WORKDIR /app
 COPY Gemfile /app/Gemfile
