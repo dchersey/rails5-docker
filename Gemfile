@@ -22,10 +22,14 @@ gem 'pg', '~> 0.21'
 
 # Use Redis Rails to set up a Redis backed Cache and / or Session
 gem 'redis-rails', '~> 5.0'
+gem 'redis-browser'
+gem 'redis-namespace'
 
 # Use Sidekiq as a background job processor through Active Job
 gem 'sidekiq', '~> 5.0'
-
+gem 'sidekiq_mailer'
+gem 'sidekiq-history'
+gem 'sidekiq-scheduler'
 # Use Clockwork for recurring background tasks without needing cron
 # gem 'clockwork', '~> 2.0'
 
@@ -44,38 +48,8 @@ gem 'jquery-rails', '~> 4.3'
 # Use Turbolinks. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 
-# Use Bootstrap SASS for Bootstrap support
-gem 'bootstrap-sass', '~> 3.3'
-
 # Use Font Awesome Rails for Font Awesome icons
 gem 'font-awesome-rails', '~> 4.7'
-
-group :development, :test do
-  # Call 'byebug' anywhere in your code to drop into a debugger console
-  gem 'byebug', platform: :mri
-
-  # End to end testing of your rails apps (Rails 5.1+ supports this)
-  # gem 'capybara', '~> 2.13'
-  # gem 'selenium-webdriver'
-end
-
-group :development do
-  # Enable a debug toolbar to help profile your application
-  gem 'rack-mini-profiler', '~> 0.10'
-
-  # Access an IRB console on exception pages or by using <%= console %>
-  gem 'web-console', '~> 3.3.0'
-
-  # Get notified of file changes. Read more: https://github.com/guard/listen
-  gem 'listen', '>= 3.0.5', '< 3.2'
-
-  # Use Spring. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data'
 
 gem 'dotenv'
 gem 'dotenv-rails'
