@@ -13,6 +13,8 @@ gem 'puma', '~> 3.10'
 
 # Use Rack Timeout. Read more: https://github.com/heroku/rack-timeout
 gem 'rack-timeout', '~> 0.4'
+# react
+gem 'react-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
@@ -22,6 +24,7 @@ gem 'pg', '~> 0.21'
 
 # Use Redis Rails to set up a Redis backed Cache and / or Session
 gem 'redis-rails', '~> 5.0'
+gem 'baby_squeel'
 gem 'redis-browser'
 gem 'redis-namespace'
 
@@ -50,6 +53,7 @@ gem 'turbolinks', '~> 5'
 
 # Use Font Awesome Rails for Font Awesome icons
 gem 'font-awesome-rails', '~> 4.7'
-
 gem 'dotenv'
 gem 'dotenv-rails'
+
+gem 'tzinfo-data'
