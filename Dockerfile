@@ -7,6 +7,8 @@ RUN apk update && apk add build-base nodejs-current postgresql-dev git
 RUN echo -e 'http://dl-cdn.alpinelinux.org/alpine/edge/main\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing' > /etc/apk/repositories && \
 apk add --no-cache yarn
 
+RUN apk upgrade --update-cache --available
+
 # install rails
 RUN mkdir -p /app
 WORKDIR /app
