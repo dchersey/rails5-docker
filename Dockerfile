@@ -1,4 +1,4 @@
-FROM ruby:2.4.5-alpine3.8
+FROM ruby:2.7.2-alpine3.13
 
 # RUN apk update -qq && apt-get install -y build-essential libpq-dev
 RUN apk update && apk add build-base linux-headers nodejs-current postgresql-dev git imagemagick file python2
