@@ -10,6 +10,9 @@ apk add --no-cache yarn
 # install rails
 RUN mkdir -p /app
 COPY Gemfile /app/
+COPY Gemfile.lock /app/
+COPY package.json /app/
+COPY yarn.lock /app/
 WORKDIR /app
 
 ENV RAILS_ROOT /app
@@ -20,4 +23,5 @@ RUN bundle config set path 'vendor'
 RUN bundle install --jobs 20 --retry 5 
 RUN bundle package
 
+RUN yarn install
 
