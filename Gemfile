@@ -54,6 +54,7 @@ gem 'simple_form'
 gem 'active_model_serializers'
 gem 'json'
 gem 'fast_jsonapi'
+gem 'jsonapi-serializer'
 
 # Authentication
 gem 'cancancan'
