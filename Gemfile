@@ -37,16 +37,20 @@ gem 'jquery-rails'
 
 # Data
 gem 'ancestry'
-gem 'aws-sdk-s3'
-
-# gem 'baby_squeel'
+gem 'aws-sdk-s3', require: false
 gem 'climate_control'
 gem 'dalli'                     # memcached
 gem 'jwt'
-gem 'paperclip'
 gem 'paranoia', '~> 2.2'
 gem 'seedbank'
 gem 'ffaker'
+
+# handle attachmemnts
+gem 'paperclip'
+gem 'mini_magick'
+gem 'mimemagic'
+gem "image_processing"
+gem 'file_validators'
 
 # Web
 gem 'bootstrap-sass'
@@ -56,6 +60,7 @@ gem 'simple_form'
 
 
 gem 'oj'
+gem 'multi_json'
 
 # REST
 gem 'json'
@@ -79,6 +84,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'react-rails'
 
+#providing for all environments for demo data setup
+gem 'factory_bot_rails'
+
 group :development, :staging do
   gem 'better_errors'#, github: 'creditkudos/better_errors', branch: 'quieter_output'
   gem 'binding_of_caller'
@@ -89,7 +97,7 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'factory_bot_rails'
+  # gem 'factory_bot_rails'
 end
 
 group :development, :test, :staging do
