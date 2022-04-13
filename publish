@@ -1,4 +1,4 @@
 #usage: echo 'docker-hub-password' | publish 
 docker login -u dchersey --password-stdin 
-docker build . -t dchersey/rails6.1.1-alpine:2.7.2.4
-docker push dchersey/rails6.1.1-alpine:2.7.2.4
+docker build . -t dchersey/rails6.1.1-alpine:2.7.2.5
+docker push dchersey/rails6.1.1-alpine:2.7.2.5

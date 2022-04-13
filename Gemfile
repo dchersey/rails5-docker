@@ -27,6 +27,9 @@ gem 'redis', '~> 4.0'
 # For namespacing data that goes into Redis. Sidekiq uses this
 gem 'redis-namespace'
 
+# CSS emails
+gem 'roadie-rails', '~> 2.2'
+
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -43,10 +46,8 @@ gem 'dalli'                     # memcached
 gem 'jwt'
 gem 'paranoia', '~> 2.2'
 gem 'seedbank'
-gem 'ffaker'
 
 # handle attachmemnts
-gem 'paperclip'
 gem 'mini_magick'
 gem 'mimemagic'
 gem "image_processing"
@@ -78,39 +79,21 @@ gem 'sidekiq-scheduler'
 gem 'sidekiq_mailer'
 
 gem 'activeadmin'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'react-rails'
+# concise logging
+gem 'lograge'
 
-#providing for all environments for demo data setup
-gem 'factory_bot_rails'
+# gem 'airbrake'
+# gem 'airbrake-ruby'
+# Windows/Alpine do not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data'
+gem 'dotenv'
+gem 'dotenv-rails'
 
-group :development, :staging do
-  gem 'better_errors'#, github: 'creditkudos/better_errors', branch: 'quieter_output'
-  gem 'binding_of_caller'
-    # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 4.1.0'
-end
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # gem 'factory_bot_rails'
-end
-
-group :development, :test, :staging do
-  gem 'rails-controller-testing'
-end
-
-group :staging, :production do
-  gem 'instrumental_agent'
-  # Display performance information such as SQL time and flame graphs for each request in your browser.
-  # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
-  gem 'rack-mini-profiler', '~> 2.0'
-  gem 'listen', '~> 3.3'
-end
+gem 'awesome_print'
 
 group :development do
   gem 'guard'
@@ -140,13 +123,12 @@ group :test do
   # Helpers
   gem 'database_cleaner'
   gem 'shoulda-matchers'
-  gem 'timecop'               # Mock Time
 
   # Coverage
   gem 'simplecov', require: false
   gem 'simplecov-cobertura'
 
-  # gem 'rspec-sidekiq'
+  gem 'rspec-sidekiq'
   gem 'rspec-activemodel-mocks'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
@@ -155,13 +137,29 @@ group :test do
   gem 'webdrivers'
 end
 
+group :development, :staging do
+  gem 'better_errors'#, github: 'creditkudos/better_errors', branch: 'quieter_output'
+  gem 'binding_of_caller'
+    # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'web-console', '>= 4.1.0'
+end
 
-# gem 'airbrake'
-# gem 'airbrake-ruby'
-# Windows/Alpine do not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data'
+group :development, :test, :staging do
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rails-controller-testing'
+end
 
-gem 'dotenv'
-gem 'dotenv-rails'
+group :development, :test, :staging, :demo do
+  gem 'timecop'               # Mock Time
+  gem 'factory_bot_rails'
+  gem 'ffaker'
+end
 
-gem 'awesome_print'
+group :staging, :production, :demo do
+  gem 'instrumental_agent'
+  # Display performance information such as SQL time and flame graphs for each request in your browser.
+  # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
+  gem 'rack-mini-profiler', '~> 2.0'
+  gem 'listen', '~> 3.3'
+end
+
