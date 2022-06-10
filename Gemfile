@@ -9,6 +9,8 @@ gem 'rails', '~> 6.1.1'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
+# Add support for SQL view migrations in ActiveRecord
+gem 'scenic'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 
@@ -85,6 +87,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'react-rails'
 # concise logging
 gem 'lograge'
+
+# Integration with Atlassian Jira
+gem 'jira-ruby'
 
 # gem 'airbrake'
 # gem 'airbrake-ruby'
