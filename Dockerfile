@@ -20,8 +20,8 @@ ENV RAILS_ROOT /app
 
 RUN gem install bundler
 RUN bundle config set path 'vendor'
-# RUN bundle install --jobs 20 --retry 5 
-# RUN bundle package
+RUN bundle install --jobs 20 --retry 5 
+RUN bundle package
 
-# RUN yarn install
+RUN yarn install
 
