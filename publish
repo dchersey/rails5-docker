@@ -1,3 +1,3 @@
 #usage: echo 'docker-hub-password' | publish 
 docker login -u dchersey --password-stdin 
-docker buildx build --platform=linux/amd64,linux/arm64 -t dchersey/rails6.1.1-alpine:2.7.2.12 --push .
+docker buildx build --platform=linux/amd64,linux/arm64 -t dchersey/rails6.1.1-alpine15-node18 --push .
