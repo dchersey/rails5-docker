@@ -1,4 +1,4 @@
-FROM node:18-alpine3.16 as node
+FROM node:16-alpine3.16 as node
 FROM ruby:2.7-alpine3.15 
 
 COPY --from=node /usr/lib /usr/lib
